@@ -34,7 +34,16 @@ namespace MicrosoftArray
 
         static int FirstUniqLambda(int[] myArray)
         {
-
+            List<int> myList= myArray.ToList();
+            for (int i = 0; i < myList.Count; i++)
+            {
+                int tal = myList[i];
+                int firstIndex = myList.FindIndex((f => f == tal));
+                int lastIndex = myList.FindLastIndex((f => f == tal));
+                if (firstIndex == lastIndex)
+                    return i;
+            }
+            return -1;
 
         }
 
@@ -42,7 +51,7 @@ namespace MicrosoftArray
         {
 
             Console.WriteLine(myArray[FirstUniqIterativ(myArray)]);
-            //Console.WriteLine(myArray[FirstUniqLambda(myArray)]);
+            Console.WriteLine(myArray[FirstUniqLambda(myArray)]);
             Console.ReadLine();
         }
     }
